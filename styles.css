@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  background-color: #354c7c;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 960px;
+  height: 960px;
+  border: 1px solid black;
+}
+
+.gridElement {
+  flex: 1 0 6.25%;
+  height: 6.25%;
+  box-sizing: border-box;
+  border: 1px solid black;
+}

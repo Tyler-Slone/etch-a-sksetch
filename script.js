@@ -12,6 +12,18 @@ function createGrid(gridSize) {
     gridElement.addEventListener("mouseover", changeColor);
     grid.appendChild(gridElement);
   }
+  setGridElementSize(gridSize);
+}
+
+// Sets the size of each grid element based on gridSize
+function setGridElementSize(gridSize) {
+  const gridElements = document.querySelectorAll(".gridElement");
+  const elementSize = 100 / gridSize;
+
+  gridElements.forEach((element) => {
+    element.style.flexBasis = `${elementSize}%`;
+    element.style.height = `${elementSize}%`;
+  });
 }
 
 // Changes color to black
@@ -34,8 +46,17 @@ window.onload = () => {
   createGrid(gridSize);
 };
 
-//TODO Need to add error handling for inputs > 100, 0, negative, and not a num
 changeSizeBtn.addEventListener("click", () => {
-  gridSize = prompt("Please enter a new size up to 100");
-  changeSize(gridSize);
+  let newSize = prompt("Please enter a new size up to 100");
+
+  // Convert the input to a number
+  newSize = parseInt(newSize);
+
+  // Error handling
+  if (isNaN(newSize) || newSize <= 0 || newSize > 100) {
+    alert("Please enter a valid number between 1 and 100.");
+  } else {
+    gridSize = newSize;
+    changeSize(gridSize);
+  }
 });
